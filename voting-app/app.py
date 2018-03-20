@@ -15,7 +15,7 @@ hostname = socket.gethostname()
 redis = connect_to_redis("redis")
 app = Flask(__name__)
 
-
+@app.route("/vote", methods=['POST','GET'])
 @app.route("/", methods=['POST','GET'])
 def hello():
     voter_id = request.cookies.get('voter_id')

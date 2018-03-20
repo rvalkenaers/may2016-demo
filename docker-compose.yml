@@ -10,9 +10,9 @@ voting-app:
   log_driver: ''
   tty: true
   log_opt: {}
-  image: localhost/voting-app
+  image: rvalkenaers/vote-app:v1
   links:
-  - 'voting-app:'
+  - 'redis:redis'
   stdin_open: true
 External-LB:
   ports:
@@ -28,7 +28,7 @@ result-app:
   log_driver: ''
   tty: true
   log_opt: {}
-  image: localhost/result-app
+  image: rvalkenaers/result-app
   links:
   - Postrges:db
   stdin_open: true
@@ -36,7 +36,7 @@ worker:
   log_driver: ''
   tty: true
   log_opt: {}
-  image: localhost/worker
+  image: rvalkenaers/worker
   links:
   - redis:redis
   - Postrges:db
